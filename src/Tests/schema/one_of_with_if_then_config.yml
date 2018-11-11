@@ -1,0 +1,35 @@
+properties:
+  fname:
+    type: string
+  lname:
+    type: string
+  tenant:
+    type: string
+    required: true
+  city:
+    type: string
+oneOf:
+  - type: object
+    if:
+      properties:
+        tenant:
+          type: string
+          const: IT
+          required: true
+    then:
+      properties:
+        codiceFiscale:
+          type: string
+          required: true
+  - type: object
+    if:
+      properties:
+        city:
+          type: string
+          const: Milan
+          required: true
+    then:
+      properties:
+        partitaIva:
+          type: string
+          required: true

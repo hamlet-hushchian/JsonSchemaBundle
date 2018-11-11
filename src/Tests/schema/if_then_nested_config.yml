@@ -1,0 +1,36 @@
+properties:
+  firstName:
+    type: string
+  lastName:
+    type: string
+  email:
+    type: string
+    format: email
+    required: true
+  tenant:
+    type: string
+    required: true
+if:
+  properties:
+    tenant:
+      type: string
+      const: IT
+      required: true
+then:
+  properties:
+    codiceFiscal:
+      type: string
+      required: true
+    itPromocode:
+      type: boolean
+  if:
+    properties:
+      itPromocode:
+        type: boolean
+        const: true
+        required: true
+  then:
+    properties:
+      promocodeValue:
+        type: string
+        required: true
